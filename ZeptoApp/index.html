@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Document</title>
+        <style>
+            .main {
+                height: 100vh;
+                width: 100vw;
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .component {
+                width: 50%;
+                height: 100%;
+                border: 1px solid grey;
+            }
+
+            .preview {
+                width: 50%;
+                height: 100%;
+                border: 1px solid grey;
+            }
+
+            .component-header {
+                display: flex;
+                justify-content: space-between;
+                height: 10%;
+                gap: 20px;
+                padding: 10px;
+            }
+
+            .component-header button {
+                width: 33.33%;
+                border-radius: 7px;
+            }
+
+            .yellow {
+                background-color: yellow;
+            }
+
+            .green {
+                background-color: green;
+            }
+
+            .blue {
+                background-color: blue;
+            }
+
+            .component-body {
+                padding: 10px;
+                height: 90%;
+            }
+
+            .component-body > .heading {
+                height: 10%;
+            }
+
+            label {
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                margin-top: 10px;
+            }
+
+            .component-body > .heading input,
+            textarea {
+                display: block;
+                width: 100%;
+                height: 65%;
+                border: 1px solid grey;
+                border-radius: 7px;
+            }
+
+            .component-body-image {
+                height: 60%;
+                margin-top: 20px;
+            }
+
+            .image {
+                height: 90%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid grey;
+                border-radius: 7px;
+                width: 90%;
+                margin-left: 5%;
+            }
+
+            .image > img {
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+        <script src="js/index.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="component">
+                <div class="component-header">
+                    <button class="yellow" onclick="showHeadingSection()">
+                        Heading
+                    </button>
+                    <button class="green" onclick="showImageSection()">
+                        Image
+                    </button>
+                    <button class="blue" onclick="showDescriptionSection()">
+                        Description
+                    </button>
+                </div>
+
+                <div class="component-body">
+                    <div id="heading" class="heading">
+                        <label for="">Heading</label>
+                        <input
+                            id="heading-text"
+                            onkeyup="onChange('heading-text', 'preview-heading')"
+                            type="text"
+                        />
+                    </div>
+                    <div id="component-body-image" class="component-body-image">
+                        <label for="">Upload Image</label>
+
+                        <div class="image">
+                            <input
+                                type="file"
+                                id="image-upload"
+                                onchange="onChange('image-upload', 'preview-image', 'file')"
+                            />
+                        </div>
+                    </div>
+                    <div id="description" class="heading">
+                        <label for="">Description</label>
+                        <textarea
+                            onkeyup="onChange('description-text', 'preview-description')"
+                            name=""
+                            id="description-text"
+                            cols="30"
+                            rows="10"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview">
+                <div class="component-body">
+                    <div class="heading">
+                        <label id="preview-heading" for=""></label>
+                    </div>
+                    <div class="component-body-image">
+                        <label for=""></label>
+
+                        <div class="image">
+                            <img
+                                id="preview-image"
+                                src="#"
+                                alt="Preview Image"
+                            />
+                        </div>
+                    </div>
+                    <div class="heading">
+                        <label id="preview-description" for=""></label>
+                    </div>
+                    <div class="download">
+                        <button
+                            class="blue"
+                            onclick="downloadImage('preview-image')"
+                        >
+                            Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+Collapse has context menu
